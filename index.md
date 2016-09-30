@@ -16,7 +16,27 @@ copyright: Copyright © 2016-2017 Jury Ghidinelli
 
 # Linguaggi interpretati e compilati
 
-To be _completed_
+<% left do %>
+
+### Linguaggi interpretati
+
+* Strongly,
+* Statically,
+* Manifestly
+
+typed.
+<% end %>
+
+<% right do %>
+
+### Linguaggi compilati
+
+* Strongly,
+* Dynamically,
+* Implicitly
+
+typed.
+<% end %>
 
 
 # Cenni di programmazione orientata agli oggetti
@@ -38,7 +58,7 @@ To be _completed_
 
 To be _completed_
 
-https://rvm.io/
+[https://rvm.io/](https://rvm.io/)
 
 
 # Interactive Ruby Shell (irb)
@@ -48,6 +68,8 @@ To be _completed_
 # Rake e Gems bundle
 
 To be _completed_
+
+[http://bundler.io/](http://bundler.io/)
 
 ---
 
