@@ -14,27 +14,43 @@ copyright: Copyright © 2016 Archimedia s.r.l.
 
 # Linguaggi interpretati e compilati
 
+Il linguaggio di programmazione è generalmente un file di testo con contenuto il codice sorgente che descrive l'algoritmo.
+
+Per essere eseguito il codice sorgente deve essere tradotto in linguaggio macchina; la traduzione da codice sorgente a
+linguaggio macchina può avvenire in due modi, con la compilazione del codice sorgente o con l'interpretazione del codice sorgente.
+
 <% left do %>
 
 ### Linguaggi interpretati
 
-* Strongly,
-* Statically,
-* Manifestly
+L'interprete è il programma che si occupa di interpretare il codice sorgente per l'esecuzione
 
-typed.
+I linguaggi internpretati non hanno bisogno di compilazione, vengono eseguiti direttamente con il codice sorgente
+
+Uno dei più grandi vantaggi è la possibilità di eseguire lo stesso codice sorgente su piattaforme diverse
+
+Come svantaggio abbiamo una minor velocità di esecuzione rispetto ai programmi compilati
+
+Esempio di linguaggi interpretati sono: Ruby, Perl, Php.
+
 <% end %>
 
 <% right do %>
 
 ### Linguaggi compilati
 
-* Strongly,
-* Dynamically,
-* Implicitly
+La compilazione è il processo con cui il compilatore (il traduttore) traduce da codice sorgente a linguaggio macchina.
 
-typed.
+Tra i vantaggi c'è la velocità di esecuzione del codice compilato, ottimizzato per l'hardware compilatore
+
+Tra gli svantaggi c'è il fatto che un programma deve essere espressamente compilato per ogni hardware specifico.
+
+Esempio di linguaggi compilati sono: C, C++
+
 <% end %>
+
+Esistono infine linguaggi di programmazione "ibridi", ovvero che vengono si compilati ma non in linguaggio macchina (ma in bytecode/P-code)
+che rendono l'esecuzione indipendente dalla piattaforma: Java, .NET
 
 
 # Cenni di programmazione orientata agli oggetti
@@ -70,32 +86,128 @@ end
 
 ### Oggetto
 
-L'oggetto è __l'istanza di una classe__, fornisce tutti i metodi e gli attributi ed agisce come fornutore di messaggi alla classe
+L'oggetto è __l'istanza di una classe__, fornisce tutti i metodi e gli attributi ed agisce come fornitore di messaggi alla classe.
+
+Inviare un messaggio ad un oggetto significa invocare un metodo sull'oggetto.
+
+La parola chiave per indicare l'istanza di un oggetto in Ruby è `self`
+
+Creare un'istanza significa creare un nuovo oggetto di una certa classe in Ruby:<br/>
+
+```
+alfa_romeo = Car.new
+# alfa_romeo è l'istanza della classe Car
+```
 
 # Cenni di programmazione funzionale
 
-To be _completed_
+La programmazione funzionale si basa sul concetto matematico di funzione (non informatico), cioè la funzione matematica, non esegue calcoli
+ma si limita a mappare dei valori.
 
+Rispetto alla programmazione ad oggetti, la programazione funzionale non ragiona appunto come oggetto ma come funzione, di conseguenza
+non esiste il concetto di variabile o di stato del programma in un dato momento.
+
+Ruby non è un linguaggio funzionale, ma adotta alcune tecniche relative alla programmazione funzionale (Proc e lambda )
+
+```
+foo = [1,2,3,4,5]
+foo.map({|bar| puts bar + 1})
+```
+La funzione `map` è una funzione che ha come parametro un'altra funzione. In Ruby il codice racchiuso tra `{}` è una funzione anonima.
+
+La traduzione della funzione map è _per ogni elemento dell'array, stampa il valore dell'elemento aggiungendo 1_
+
+Questo tipo di funzioni si chiamano _high-order functions_
+
+Ruby per quanto riguarda la programmazione funzionale implementa anche le "closures" attraverso le funzioni anonime Proc e lambda
+
+Esempio di implementazione in Ruby
+
+```
+def moltiplicazione(moltiplicatore)
+    return lambda {|n| n*moltiplicatore }
+end
+
+per3 = moltiplicazione(3)
+per8 = moltiplicazione(8)
+
+puts per3.call(3)               #=> 9
+puts per3.call(per8.call(2))    #=> 48
+```
 
 # Ruby, Rails, Ruby On Rails
 
-To be _completed_
+Ruby è un linguaggio di scripting interpretato completamente ad oggetti nato nel 1995. Grazie al framework MVC Ruby on Rails
+ha avuto negli ultimi anni una rapida diffusione a livello mondiale.
+
+Ruby prende spunto da linguaggi preesistenti :
+
+* Smaltalk:  quanto riguarda lo sviluppo orientato agli oggetti
+* Lisp: per le sue caratteristiche di __programmazione funzionale__
+* Perl: per sintassi ed espressioni
+
+Ruby si è diffuso enormemente negli ultimi anni anche per la sua versatilità. Oltre al framework per il web Ruby on Rails,
+ci sono anche numerosi progetti che si basano su linguaggio Ruby:
+
+* Ruby on Rails: framework MVC per il web
+* Metasploit: framework per la sicurezza informatica
+* Adeharsion: framework applicazioni voice
+* sonic-pi: sintetizzatore musicale da scripting
+* chef: deployer per cloud e sistemi server
+* slideshow: queste slide sono fatte con slideshow
+
+numerosissimi infine sono i progetti web sviluppati in Ruby e Ruby on Rails:
+
+* Solidus/Spree: framework per il commercio elettronico
+* Shopify
+* Airbnb
+* Stripe
+* Twitter
+* github
+* groupon
 
 
 # Setup di Ruby su Linux
 
-To be _completed_
+L'interprete Ruby è disponibile per i maggiori sistemi operativi: Linux, Windows, MacOS, ed altri.
 
-[https://rvm.io/](https://rvm.io/)
+Per l'installazione in ambiente Linux generalmente utilizziamo [R.V.M.](https://rvm.io/)
+
+Rvm è un'utility command line che permette di gestire contemporaneamente più ambienti diversi di versioni diverse
+di Ruby ed il relativo set di Gemme.
+
+per l'installazione:
+
+Da utente NON root eseguire `$ \curl -sSL https://get.rvm.io | sudo bash -s stable`
+
+Aggiungere gli utenti che devono usare rvm al gruppo rvm che ha creato l'installazione.
+
+A questo punto abbiamo installato RVM, di conseguenza possiamo:
+
+avere un elenco di versioni di Ruby installate `rvm list`, oppure `rvm list known` avere un elenco di versioni di Ruby installabili ed infine `rvm install 2.3`
+installare una versione di Ruby oppure utilizzare una certa versione di Ruby installata `rvm use 2.3`
 
 
 # Interactive Ruby Shell (irb)
 
-To be _completed_
+Con l'installazione di Ruby abbiamo a disposizione la shell interattiva di Ruby. Con la shell interattiva abbiamo a disposizione un ambiente
+dove possiamo scrivere comandi ruby.
 
-# Rake e Gems bundle
+```
+$ irb
+2.3.0:001>puts "Ciao Ruby"
+Ciao Ruby
+2.3.0:002>
+```
 
-To be _completed_
+attraverso irb è possibile eseguire qualsiasi comando Ruby.
+
+
+# Gems, Bundle
+
+
+
+
 
 [http://bundler.io/](http://bundler.io/)
 

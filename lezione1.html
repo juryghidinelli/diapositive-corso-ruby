@@ -41,18 +41,25 @@
     <!-- _S9SLIDE_ -->
 <h1 id="linguaggi-interpretati-e-compilati">Linguaggi interpretati e compilati</h1>
 
+<p>Il linguaggio di programmazione è generalmente un file di testo con contenuto il codice sorgente che descrive l’algoritmo.</p>
+
+<p>Per essere eseguito il codice sorgente deve essere tradotto in linguaggio macchina; la traduzione da codice sorgente a
+linguaggio macchina può avvenire in due modi, con la compilazione del codice sorgente o con l’interpretazione del codice sorgente.</p>
+
 <!-- begin left {} -->
 <table width="100%"><tr><td width="50%" style="vertical-align: top;">
 
       <h3 id="linguaggi-interpretati">Linguaggi interpretati</h3>
 
-      <ul>
-        <li>Strongly,</li>
-        <li>Statically,</li>
-        <li>Manifestly</li>
-      </ul>
+      <p>L’interprete è il programma che si occupa di interpretare il codice sorgente per l’esecuzione</p>
 
-      <p>typed.</p>
+      <p>I linguaggi internpretati non hanno bisogno di compilazione, vengono eseguiti direttamente con il codice sorgente</p>
+
+      <p>Uno dei più grandi vantaggi è la possibilità di eseguire lo stesso codice sorgente su piattaforme diverse</p>
+
+      <p>Come svantaggio abbiamo una minor velocità di esecuzione rispetto ai programmi compilati</p>
+
+      <p>Esempio di linguaggi interpretati sono: Ruby, Perl, Php.</p>
 
     </td>
 <!-- end left -->
@@ -67,16 +74,19 @@
 
       <h3 id="linguaggi-compilati">Linguaggi compilati</h3>
 
-      <ul>
-        <li>Strongly,</li>
-        <li>Dynamically,</li>
-        <li>Implicitly</li>
-      </ul>
+      <p>La compilazione è il processo con cui il compilatore (il traduttore) traduce da codice sorgente a linguaggio macchina.</p>
 
-      <p>typed.</p>
+      <p>Tra i vantaggi c’è la velocità di esecuzione del codice compilato, ottimizzato per l’hardware compilatore</p>
+
+      <p>Tra gli svantaggi c’è il fatto che un programma deve essere espressamente compilato per ogni hardware specifico.</p>
+
+      <p>Esempio di linguaggi compilati sono: C, C++</p>
 
     </td></tr></table>
 <!-- end right -->
+
+<p>Esistono infine linguaggi di programmazione “ibridi”, ovvero che vengono si compilati ma non in linguaggio macchina (ma in bytecode/P-code)
+che rendono l’esecuzione indipendente dalla piattaforma: Java, .NET</p>
 
 
 
@@ -122,7 +132,17 @@ end
 
 <h3 id="oggetto">Oggetto</h3>
 
-<p>L’oggetto è <strong>l’istanza di una classe</strong>, fornisce tutti i metodi e gli attributi ed agisce come fornutore di messaggi alla classe</p>
+<p>L’oggetto è <strong>l’istanza di una classe</strong>, fornisce tutti i metodi e gli attributi ed agisce come fornitore di messaggi alla classe.</p>
+
+<p>Inviare un messaggio ad un oggetto significa invocare un metodo sull’oggetto.</p>
+
+<p>La parola chiave per indicare l’istanza di un oggetto in Ruby è <code>self</code></p>
+
+<p>Creare un’istanza significa creare un nuovo oggetto di una certa classe in Ruby:<br /></p>
+
+<pre><code>alfa_romeo = Car.new
+# alfa_romeo è l'istanza della classe Car
+</code></pre>
 
 
 
@@ -132,7 +152,37 @@ end
     <!-- _S9SLIDE_ -->
 <h1 id="cenni-di-programmazione-funzionale">Cenni di programmazione funzionale</h1>
 
-<p>To be <em>completed</em></p>
+<p>La programmazione funzionale si basa sul concetto matematico di funzione (non informatico), cioè la funzione matematica, non esegue calcoli
+ma si limita a mappare dei valori.</p>
+
+<p>Rispetto alla programmazione ad oggetti, la programazione funzionale non ragiona appunto come oggetto ma come funzione, di conseguenza
+non esiste il concetto di variabile o di stato del programma in un dato momento.</p>
+
+<p>Ruby non è un linguaggio funzionale, ma adotta alcune tecniche relative alla programmazione funzionale (Proc e lambda )</p>
+
+<pre><code>foo = [1,2,3,4,5]
+foo.map({|bar| puts bar + 1})
+</code></pre>
+<p>La funzione <code>map</code> è una funzione che ha come parametro un’altra funzione. In Ruby il codice racchiuso tra <code>{}</code> è una funzione anonima.</p>
+
+<p>La traduzione della funzione map è <em>per ogni elemento dell’array, stampa il valore dell’elemento aggiungendo 1</em></p>
+
+<p>Questo tipo di funzioni si chiamano <em>high-order functions</em></p>
+
+<p>Ruby per quanto riguarda la programmazione funzionale implementa anche le “closures” attraverso le funzioni anonime Proc e lambda</p>
+
+<p>Esempio di implementazione in Ruby</p>
+
+<pre><code>def moltiplicazione(moltiplicatore)
+    return lambda {|n| n*moltiplicatore }
+end
+
+per3 = moltiplicazione(3)
+per8 = moltiplicazione(8)
+
+puts per3.call(3)               #=&gt; 9
+puts per3.call(per8.call(2))    #=&gt; 48
+</code></pre>
 
 
 
@@ -142,7 +192,40 @@ end
     <!-- _S9SLIDE_ -->
 <h1 id="ruby-rails-ruby-on-rails">Ruby, Rails, Ruby On Rails</h1>
 
-<p>To be <em>completed</em></p>
+<p>Ruby è un linguaggio di scripting interpretato completamente ad oggetti nato nel 1995. Grazie al framework MVC Ruby on Rails
+ha avuto negli ultimi anni una rapida diffusione a livello mondiale.</p>
+
+<p>Ruby prende spunto da linguaggi preesistenti :</p>
+
+<ul>
+  <li>Smaltalk:  quanto riguarda lo sviluppo orientato agli oggetti</li>
+  <li>Lisp: per le sue caratteristiche di <strong>programmazione funzionale</strong></li>
+  <li>Perl: per sintassi ed espressioni</li>
+</ul>
+
+<p>Ruby si è diffuso enormemente negli ultimi anni anche per la sua versatilità. Oltre al framework per il web Ruby on Rails,
+ci sono anche numerosi progetti che si basano su linguaggio Ruby:</p>
+
+<ul>
+  <li>Ruby on Rails: framework MVC per il web</li>
+  <li>Metasploit: framework per la sicurezza informatica</li>
+  <li>Adeharsion: framework applicazioni voice</li>
+  <li>sonic-pi: sintetizzatore musicale da scripting</li>
+  <li>chef: deployer per cloud e sistemi server</li>
+  <li>slideshow: queste slide sono fatte con slideshow</li>
+</ul>
+
+<p>numerosissimi infine sono i progetti web sviluppati in Ruby e Ruby on Rails:</p>
+
+<ul>
+  <li>Solidus/Spree: framework per il commercio elettronico</li>
+  <li>Shopify</li>
+  <li>Airbnb</li>
+  <li>Stripe</li>
+  <li>Twitter</li>
+  <li>github</li>
+  <li>groupon</li>
+</ul>
 
 
 
@@ -152,9 +235,23 @@ end
     <!-- _S9SLIDE_ -->
 <h1 id="setup-di-ruby-su-linux">Setup di Ruby su Linux</h1>
 
-<p>To be <em>completed</em></p>
+<p>L’interprete Ruby è disponibile per i maggiori sistemi operativi: Linux, Windows, MacOS, ed altri.</p>
 
-<p><a href="https://rvm.io/">https://rvm.io/</a></p>
+<p>Per l’installazione in ambiente Linux generalmente utilizziamo <a href="https://rvm.io/">R.V.M.</a></p>
+
+<p>Rvm è un’utility command line che permette di gestire contemporaneamente più ambienti diversi di versioni diverse
+di Ruby ed il relativo set di Gemme.</p>
+
+<p>per l’installazione:</p>
+
+<p>Da utente NON root eseguire <code>$ \curl -sSL https://get.rvm.io | sudo bash -s stable</code></p>
+
+<p>Aggiungere gli utenti che devono usare rvm al gruppo rvm che ha creato l’installazione.</p>
+
+<p>A questo punto abbiamo installato RVM, di conseguenza possiamo:</p>
+
+<p>avere un elenco di versioni di Ruby installate <code>rvm list</code>, oppure <code>rvm list known</code> avere un elenco di versioni di Ruby installabili ed infine <code>rvm install 2.3</code>
+installare una versione di Ruby oppure utilizzare una certa versione di Ruby installata <code>rvm use 2.3</code></p>
 
 
 
@@ -164,7 +261,16 @@ end
     <!-- _S9SLIDE_ -->
 <h1 id="interactive-ruby-shell-irb">Interactive Ruby Shell (irb)</h1>
 
-<p>To be <em>completed</em></p>
+<p>Con l’installazione di Ruby abbiamo a disposizione la shell interattiva di Ruby. Con la shell interattiva abbiamo a disposizione un ambiente
+dove possiamo scrivere comandi ruby.</p>
+
+<pre><code>$ irb
+2.3.0:001&gt;puts "Ciao Ruby"
+Ciao Ruby
+2.3.0:002&gt;
+</code></pre>
+
+<p>attraverso irb è possibile eseguire qualsiasi comando Ruby.</p>
 
 
 
@@ -172,9 +278,7 @@ end
 
   <div class="slide">
     <!-- _S9SLIDE_ -->
-<h1 id="rake-e-gems-bundle">Rake e Gems bundle</h1>
-
-<p>To be <em>completed</em></p>
+<h1 id="gems-bundle">Gems, Bundle</h1>
 
 <p><a href="http://bundler.io/">http://bundler.io/</a></p>
 
