@@ -155,16 +155,18 @@ ci sono anche numerosi progetti che si basano su linguaggio Ruby:
 * sonic-pi: sintetizzatore musicale da scripting
 * chef: deployer per cloud e sistemi server
 * slideshow: queste slide sono fatte con slideshow
+* Vagrant
+* Chef
 
-numerosissimi infine sono i progetti web sviluppati in Ruby e Ruby on Rails:
+numerosissimi inoltre sono i progetti web sviluppati in Ruby e Ruby on Rails:
 
 * Solidus/Spree: framework per il commercio elettronico
 * Shopify
 * Airbnb
 * Stripe
 * Twitter
-* github
-* groupon
+* Github
+* Groupon
 
 
 # Setup di Ruby su Linux
@@ -203,14 +205,94 @@ Ciao Ruby
 attraverso irb è possibile eseguire qualsiasi comando Ruby.
 
 
-# Gems, Bundle
+# Ruby Gems, Bundle
+
+__Ruby Gems__
+
+Ruby gems è il package manager di Ruby. Per gestore di pacchetti si intende il software che permette di installare, aggiornare, gestire i pacchetti
+Ruby (gems - gemme).
+
+Il repository ufficiale delle gemme di Ruby è [Ruby Gems](https://www.rubygems.org/).
+
+Le gemme sono di fatto delle librerie che vengono installate a livello di sistema o a livello applicativo.
+
+Le gemme sono versionate, quindi può essere indicata precisamente la versione della gemma da utilizzare nel sistema
+
+I comandi  principali sono:
+
+* gem list
+* gem install <nome della gemma> --version
+* gem update <nome della gemma>
+* gem help commands
+
+Il comando gem viene installato con l'installazione di ruby
+
+__Bundle__
+
+[Bundler](http://bundler.io) è un gestore di dipendenze appplicative. Per gestore di dipendenze applicative si intende un "file di configurazione"
+(Gemfile e Gemfile.lock) dove vengono gestite le gemme necessarie al progetto che si sta sviluppando con la relativa versione.
+
+Bundler è a sua volta una gemma, quindi per l'installazione si deve usare gem : `gem install bundler`
+
+Per inizializzare il progetto Ruby all'utilizzo di bundler : `bundler init` che crea il file Gemfile.
+
+Il file Gemfile è il file di configurazione di qualsiasi applicazione Ruby (più avanti vedremo quindi anche di Rails) dove vengono elencate le gemme
+necessarie all'applicazione.
+
+Editando il file Gemfile:
+
+```
+source "https://rubygems.org"
+# gem "rails"
+```
+
+Proviamo ad installare la gemma [Colorize](https://rubygems.org/gems/colorize)
+
+Modificare il file aggiungendo la gemma  `gem "colorize"` e togliendo la gemma rails (commentata)
+
+Eseguiamo il comando `bundle install`
+
+Proviamo ad usare la gemma con irb
+
+```
+irb
+
+>require 'colorize'
+>String.colors      
+>puts "testo colorato".colorize(:red)
+>puts "This is red on blue and underline".colorize(:red).on_blue.underline
+```
+Oltre al file Gemfile, il comando bundle installa crea anche il file Gemfile.lock che descrive l'elenco delle gemme necessarie al progetto
+con la relativa versione
 
 
+# Strumenti di sviluppo
 
+__Editor__
 
+Per sviluppare in Ruby è sufficiente un editor di testo qualsiasi di base (vi,nano)
 
-[http://bundler.io/](http://bundler.io/)
+Ci sono editor un pò più evoluti e graficamente più gradevoli per esempio: [Atom](https://atom.io/)
+
+Ci sono IDE molto evoluti e completi
+
+* [Ruby Mine](https://www.jetbrains.com/ruby/)
+* [Rad Rails](http://www.aptana.com/products/radrails.html)
+
+__Versionamento del codice (git)__
+
+Git è un sistema di versionamento dei progetti software.
+
+Git è utile per piccoli progetti, necessario per gruppi di sviluppatori, indispendabile per grandi progetti
+
+Git si compone di un server (dove viene mantenuto il repository del sorgente) e di un client (che serve per gestire il progetto)
+
+Una guida introduttiva e veloce a git [http://rogerdudler.github.io/git-guide/index.it.html](http://rogerdudler.github.io/git-guide/index.it.html)
+
 
 # Q&A
 
-Domande e risposte
+* Cosa è un linguaggio interpretato?
+* In cosa può essermi d'aiuto Ruby?
+* Come installo Ruby?
+* Ruby e JAVA => RJB (collegamento AS/400 DB2)

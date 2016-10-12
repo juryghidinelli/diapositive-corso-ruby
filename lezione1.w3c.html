@@ -249,9 +249,11 @@ ci sono anche numerosi progetti che si basano su linguaggio Ruby:</p>
   <li>sonic-pi: sintetizzatore musicale da scripting</li>
   <li>chef: deployer per cloud e sistemi server</li>
   <li>slideshow: queste slide sono fatte con slideshow</li>
+  <li>Vagrant</li>
+  <li>Chef</li>
 </ul>
 
-<p>numerosissimi infine sono i progetti web sviluppati in Ruby e Ruby on Rails:</p>
+<p>numerosissimi inoltre sono i progetti web sviluppati in Ruby e Ruby on Rails:</p>
 
 <ul>
   <li>Solidus/Spree: framework per il commercio elettronico</li>
@@ -259,8 +261,8 @@ ci sono anche numerosi progetti che si basano su linguaggio Ruby:</p>
   <li>Airbnb</li>
   <li>Stripe</li>
   <li>Twitter</li>
-  <li>github</li>
-  <li>groupon</li>
+  <li>Github</li>
+  <li>Groupon</li>
 </ul>
 
 
@@ -314,9 +316,96 @@ Ciao Ruby
 
   <div class="slide">
     <!-- _S9SLIDE_ -->
-<h1 id="gems-bundle">Gems, Bundle</h1>
+<h1 id="ruby-gems-bundle">Ruby Gems, Bundle</h1>
 
-<p><a href="http://bundler.io/">http://bundler.io/</a></p>
+<p><strong>Ruby Gems</strong></p>
+
+<p>Ruby gems è il package manager di Ruby. Per gestore di pacchetti si intende il software che permette di installare, aggiornare, gestire i pacchetti
+Ruby (gems - gemme).</p>
+
+<p>Il repository ufficiale delle gemme di Ruby è <a href="https://www.rubygems.org/">Ruby Gems</a>.</p>
+
+<p>Le gemme sono di fatto delle librerie che vengono installate a livello di sistema o a livello applicativo.</p>
+
+<p>Le gemme sono versionate, quindi può essere indicata precisamente la versione della gemma da utilizzare nel sistema</p>
+
+<p>I comandi  principali sono:</p>
+
+<ul>
+  <li>gem list</li>
+  <li>gem install <nome della="" gemma=""> --version</nome></li>
+  <li>gem update <nome della="" gemma=""></nome></li>
+  <li>gem help commands</li>
+</ul>
+
+<p>Il comando gem viene installato con l’installazione di ruby</p>
+
+<p><strong>Bundle</strong></p>
+
+<p><a href="http://bundler.io">Bundler</a> è un gestore di dipendenze appplicative. Per gestore di dipendenze applicative si intende un “file di configurazione”
+(Gemfile e Gemfile.lock) dove vengono gestite le gemme necessarie al progetto che si sta sviluppando con la relativa versione.</p>
+
+<p>Bundler è a sua volta una gemma, quindi per l’installazione si deve usare gem : <code>gem install bundler</code></p>
+
+<p>Per inizializzare il progetto Ruby all’utilizzo di bundler : <code>bundler init</code> che crea il file Gemfile.</p>
+
+<p>Il file Gemfile è il file di configurazione di qualsiasi applicazione Ruby (più avanti vedremo quindi anche di Rails) dove vengono elencate le gemme
+necessarie all’applicazione.</p>
+
+<p>Editando il file Gemfile:</p>
+
+<pre><code>source "https://rubygems.org"
+# gem "rails"
+</code></pre>
+
+<p>Proviamo ad installare la gemma <a href="https://rubygems.org/gems/colorize">Colorize</a></p>
+
+<p>Modificare il file aggiungendo la gemma  <code>gem "colorize"</code> e togliendo la gemma rails (commentata)</p>
+
+<p>Eseguiamo il comando <code>bundle install</code></p>
+
+<p>Proviamo ad usare la gemma con irb</p>
+
+<pre><code>irb
+
+&gt;require 'colorize'
+&gt;String.colors      
+&gt;puts "testo colorato".colorize(:red)
+&gt;puts "This is red on blue and underline".colorize(:red).on_blue.underline
+</code></pre>
+<p>Oltre al file Gemfile, il comando bundle installa crea anche il file Gemfile.lock che descrive l’elenco delle gemme necessarie al progetto
+con la relativa versione</p>
+
+
+
+  </div>
+
+  <div class="slide">
+    <!-- _S9SLIDE_ -->
+<h1 id="strumenti-di-sviluppo">Strumenti di sviluppo</h1>
+
+<p><strong>Editor</strong></p>
+
+<p>Per sviluppare in Ruby è sufficiente un editor di testo qualsiasi di base (vi,nano)</p>
+
+<p>Ci sono editor un pò più evoluti e graficamente più gradevoli per esempio: <a href="https://atom.io/">Atom</a></p>
+
+<p>Ci sono IDE molto evoluti e completi</p>
+
+<ul>
+  <li><a href="https://www.jetbrains.com/ruby/">Ruby Mine</a></li>
+  <li><a href="http://www.aptana.com/products/radrails.html">Rad Rails</a></li>
+</ul>
+
+<p><strong>Versionamento del codice (git)</strong></p>
+
+<p>Git è un sistema di versionamento dei progetti software.</p>
+
+<p>Git è utile per piccoli progetti, necessario per gruppi di sviluppatori, indispendabile per grandi progetti</p>
+
+<p>Git si compone di un server (dove viene mantenuto il repository del sorgente) e di un client (che serve per gestire il progetto)</p>
+
+<p>Una guida introduttiva e veloce a git <a href="http://rogerdudler.github.io/git-guide/index.it.html">http://rogerdudler.github.io/git-guide/index.it.html</a></p>
 
 
 
@@ -326,7 +415,12 @@ Ciao Ruby
     <!-- _S9SLIDE_ -->
 <h1 id="qa">Q&amp;A</h1>
 
-<p>Domande e risposte</p>
+<ul>
+  <li>Cosa è un linguaggio interpretato?</li>
+  <li>In cosa può essermi d’aiuto Ruby?</li>
+  <li>Come installo Ruby?</li>
+  <li>Ruby e JAVA =&gt; RJB (collegamento AS/400 DB2)</li>
+</ul>
 
   </div>
 
