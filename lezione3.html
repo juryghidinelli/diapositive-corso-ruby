@@ -1,0 +1,248 @@
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Slide Show (S9) v3.3.0 on Ruby 2.1.1 (2014-02-24) [x86_64-darwin12.0]" />
+<meta name="author"    content="Jury Ghidinelli" />
+<meta name="copyright" content="Copyright © 2016 Archimedia s.r.l." />
+<meta name="duration"  content="20" />
+
+<title>Ruby e Ruby on Rails - Lezione 3</title>
+
+<link rel="stylesheet" href="styles/slidy.css" type="text/css" />
+<script src="scripts/slidy.js" charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+
+
+  <div class="slide">
+    
+<!-- _S9SLIDE_ -->
+<h1 id="la-classe">La classe</h1>
+
+<p>In Ruby ogni cosa è un oggetto . La programmazione orientata agli oggetti modella e descrive
+in un modo più simile alla realtà un software. Infatti un oggetto in Ruby ha determinate
+caratteristiche e proprietà come potrebbe averlo un’automobile nel mondo reale (marca, modello)
+e fa determinate funzioni (si accende, sterza a destra, sterza a sinistra).</p>
+
+<p>In Ruby quindi per creare un oggetto è necessario definire un <strong>Classe</strong> al quale interno
+sono definiti metodi e attributi; praticamente una classe è la definizione di un oggetto
+(la classe Car è la definizioe dell’oggetto alfa_romeo o ferrari)</p>
+
+<p>La definizione delle classi in Ruby è descritta in questo modo:</p>
+
+<pre><code>def Car
+  def initialize #il metodo initialize viene eseguito nel momento in cui viene creata la classe
+    puts "Sono un'automobile"
+  end
+end
+
+automobile = Car.new #creazione della classe
+Sono un'automobile #output a console del risultato
+
+</code></pre>
+
+<p><code>initialize</code> è ile metodo costruttore della classe e viene invocato al momento
+della creazione dell’oggetto della classe</p>
+
+
+
+  </div>
+
+  <div class="slide">
+    <!-- _S9SLIDE_ -->
+<h1 id="loggetto-istanza-di-una-classe">L’oggetto: istanza di una classe</h1>
+
+<p>L’oggetto è l’istanza di una classe, e viene creata nel momento in cui si instanzia una nuova classe.</p>
+
+<pre><code>automobile = Car.new(10,5)
+</code></pre>
+
+<p>la variabile automobile è l’istanza della classe Car</p>
+
+
+
+  </div>
+
+  <div class="slide">
+    <!-- _S9SLIDE_ -->
+<h1 id="accessors-getters-e-setters">Accessors: getters e setters</h1>
+
+<p>Gli attributi accessori sono delle “scorciatoie” alla creazione di metodi setter e getter.</p>
+
+<pre><code>attr_accessor :litri_carburante, :posti_a_sedere #imposta il
+
+#attr_reader :litri_carburante #attributo in sola lettura
+#attr_writer :litri_carburante #attributo in sola scrittura
+
+#attr :litri_carburante, true #attributo che può essere anche scrivibile (true)
+#attr :litri_carburante, true #attributo che può essere anche scrivibile (true)
+</code></pre>
+
+
+
+  </div>
+
+  <div class="slide">
+    <!-- _S9SLIDE_ -->
+<h1 id="metodi-di-classe-e-metodi-di-istanza">Metodi di classe e metodi di istanza</h1>
+
+<p>Esempio della classe Car con implementazione metodo di classe
+<code>calcolo_litri_al_km</code> e metodo di istanza <code>litri_al_km</code></p>
+
+<pre><code>def Car
+  attr_accessor :litri_carburante, :posti_a_sedere, :km_percorsi  
+
+  def initialize(litri_carburante, posti_a_sedere)
+    self.litri_carburante = litri_carburante
+    self.posti_a_sedere = posti_a_sedere
+  end
+
+  def Car.calcolo_litri_al_km(litri,km)
+    (litri_carburante/km_percorsi).to_i
+  end
+
+  def litri_al_km
+    Car.calcolo_litri_al_km(litri,km)
+  end
+end
+
+automobile = Car.new(10,5)
+puts automobile.litri_carburante
+puts automobile.posti_a_sedere
+puts litri_al_km
+puts Car.calcolo_litri_al_km(50,400)
+
+</code></pre>
+
+
+
+  </div>
+
+  <div class="slide">
+    <!-- _S9SLIDE_ -->
+<h1 id="relazioni-tra-classi">Relazioni tra classi</h1>
+
+<pre><code>def Car
+  attr_accessor :litri_carburante, :posti_a_sedere, :km_percorsi
+  attr_accessor :passeggeri
+
+  def initialize(litri_carburante, posti_a_sedere)
+    self.litri_carburante = litri_carburante
+    self.posti_a_sedere = posti_a_sedere
+    self.passeggeri = []
+  end
+
+  def Car.calcolo_litri_al_km(litri,km)
+    (litri_carburante/km_percorsi).to_i
+  end
+
+  def litri_al_km
+    Car.calcolo_litri_al_km(litri,km)
+  end
+
+  def stampa_passeggeri
+    self.passeggeri.each do |p|
+      puts p.nome_cognome
+    end
+  end
+
+end
+
+
+def Passenger
+  attr_accessor :nome, :cognome
+
+  def initialize(nome,cognome)
+    self.nome = nome
+    self.cognome = cognome
+  end
+
+  def nome_cognome
+    "#{nome} #{cognome}"
+  end
+
+end
+
+</code></pre>
+
+
+
+  </div>
+
+  <div class="slide">
+    <!-- _S9SLIDE_ -->
+<h1 id="oggetti-unici">Oggetti unici</h1>
+
+<p>Un esempio di un oggetto unico implementato con una classe è il seguente,</p>
+
+<pre><code>class Logger
+
+  private_class_method :new #si ridefinisce medoto new privato
+
+  @@logger = nil
+  def Logger.create
+    @@logger = new unless @@logger
+    @@logger
+  end
+end
+
+puts Logger.create.id
+puts Logger.create.id
+puts Logger.create.id
+
+</code></pre>
+
+<p><code>@@logger</code> è una variabile di classe vuol dire che è comune per tutte le classi (non solo le istanze)</p>
+
+<p>In particolare questo esempio è l’implementazione di un singleton</p>
+
+
+
+  </div>
+
+  <div class="slide">
+    <!-- _S9SLIDE_ -->
+<h1 id="ereditariet">Ereditarietà</h1>
+
+<p>To be <em>completed</em></p>
+
+
+
+  </div>
+
+  <div class="slide">
+    <!-- _S9SLIDE_ -->
+<h1 id="override-di-un-metodo">Override di un metodo</h1>
+
+<p>To be <em>completed</em></p>
+
+
+
+  </div>
+
+  <div class="slide">
+    <!-- _S9SLIDE_ -->
+<h1 id="metodi-polimorfici">Metodi polimorfici</h1>
+
+<p>To be <em>completed</em></p>
+
+
+
+  </div>
+
+  <div class="slide">
+    <!-- _S9SLIDE_ -->
+<h1 id="qa">Q&amp;A</h1>
+
+<p>Domande e risposte</p>
+
+  </div>
+
+
+</body>
+</html>
