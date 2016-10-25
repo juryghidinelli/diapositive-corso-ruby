@@ -1,0 +1,461 @@
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Slide Show (S9) v3.3.0 on Ruby 2.1.1 (2014-02-24) [x86_64-darwin12.0]" />
+<meta name="author"    content="Jury Ghidinelli" />
+<meta name="copyright" content="Copyright © 2016 Archimedia s.r.l." />
+<meta name="duration"  content="5" />
+<meta name="font-size-adjustment" content="-2" />
+
+<title>Ruby e Ruby on Rails - Lezione 2</title>
+
+<link rel="stylesheet" href="styles/slidy.css" type="text/css" />
+<link rel="stylesheet" href="styles/w3c-blue.css" type="text/css" />
+<script src="scripts/slidy.js" charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="background"><img alt="" id="head-icon"
+src="graphics/icon-blue.png" /><object id="head-logo"
+data="graphics/logo-ruby-rails.jpg" type="image/jpg"
+title="Ruby RoR logo"><a href="http://www.w3.org/"><img
+alt="Ruby RoR logo" id="head-logo-fallback"
+src="graphics/logo-ruby-rails.jpg" /></a></object></div>
+
+<div class="background slanty">
+<img src="graphics/w3c-logo-slanted.jpg" alt="slanted W3C logo" />
+</div>
+<div class="slide cover title">
+  <!-- hidden style graphics to ensure they are saved with other content -->
+  <img class="hidden" src="graphics/bullet.png" alt="" />
+  <img class="hidden" src="graphics/fold.gif" alt="" />
+  <img class="hidden" src="graphics/unfold.gif" alt="" />
+  <img class="hidden" src="graphics/fold-dim.gif" alt="" />
+  <img class="hidden" src="graphics/nofold-dim.gif" alt="" />
+  <img class="hidden" src="graphics/unfold-dim.gif" alt="" />
+  <img class="hidden" src="graphics/bullet-fold.gif" alt="" />
+  <img class="hidden" src="graphics/bullet-unfold.gif" alt="" />
+  <img class="hidden" src="graphics/bullet-fold-dim.gif" alt="" />
+  <img class="hidden" src="graphics/bullet-nofold-dim.gif" alt="" />
+  <img class="hidden" src="graphics/bullet-unfold-dim.gif" alt="" />
+
+<img src="graphics/keys2.jpg" alt="Cover page images (keys)"
+ class="cover" /><br clear="all" />
+<h1>Ruby e Ruby on Rails - Lezione 2</h1>
+
+<p>Jury Ghidinelli<br />
+<br />
+<br />
+<br />
+<br /><em>Hit the space bar or swipe right for next slide</em></p>
+</div>
+
+
+  <div class="slide">
+    
+<!-- _S9SLIDE_ -->
+<h1 id="creare-programmi-in-ruby">Creare programmi in Ruby</h1>
+
+<p>Creazione del file script.rb</p>
+
+<p><code>bundle init</code> che crea il file Gemfile</p>
+
+<p>editare il file con l’editor o l’ide</p>
+
+
+
+  </div>
+
+  <div class="slide">
+    <!-- _S9SLIDE_ -->
+<h1 id="stringhe">Stringhe</h1>
+
+<p>Le stringhe sono sequenze di caratteri racchuse tra “” oppure ‘’. Le stringhe
+sono classi di tipo String. Alla sequenza dei caratteri compresi nelle stringhe
+si può accedere con i caratteri [] come se fosse un array.</p>
+
+<pre><code>stringa = "Ciao Ruby"
+stringa.class
+stringa[0]
+stringa[0].chr
+stringa[0..3]
+stringa[0...3] #estremo escluso
+stringa[0,2] #lunghezza 4
+stringa[-6..-1] #si parte dal fondo
+stringa[4]="prova"
+</code></pre>
+
+<pre><code>"Stringa 1" * 2
+
+"Stringa 1" + "Stringa 2"
+</code></pre>
+
+<p>Metodi legati alla classe stringa</p>
+
+<pre><code>"stringa".capitalize
+"stringa".upcase
+"stringa".downcase
+"StringA".swapcase #Inversione di maiuscole e minuscole
+"stringa".chop #elimina l'ultimo carattere dalla stringa
+"stringa,".chomp(",") #elimina l'ultimo carattere separatore della stringa
+"stringa, prova, dest".gsub(/ov/,"*")
+"stringa, prova, dest".sub(/ov/,"*")
+"uno,due,tre".split(",")
+"uno,due,tre".tr("due","due!!!")
+"stringa".center(20)
+"stringa".ljust(20)
+"     stringa    ".lstrip
+"     stringa    ".rstrip
+"     stringa    ".strip
+</code></pre>
+
+
+
+  </div>
+
+  <div class="slide">
+    <!-- _S9SLIDE_ -->
+<h1 id="numeri-e-tipi-numerici">Numeri e tipi numerici</h1>
+
+<p>I tipi di dato numerici in Ruby sono Fixnum, Bignum, Float</p>
+
+<pre><code>numero_fixnum = 4
+numero_fixnum.class
+numero_bignum = 21239399232991233323232323232
+numero_bignum.class
+numero_float = 3.2
+numero_float.class
+
+#Provare a cercare nella documentazione di ruby la differenza tra Fixnum e Bignum
+
+#Operatori aritmetici +, -, *, /, %
+
+-1977.abs #valore assoluta
+100.size  #dimensione in byte
+
+2.to_f
+2.3233.to_i
+"2.3".to_f
+"2.4".to_i
+
+3.class.superclass.superclass.superclass.superclass
+
+</code></pre>
+
+<p>In ruby qualsiasi classe alla fine è un oggetto quindi:</p>
+<pre><code>"prova prova due".object_id #id dell'oggetto stringa in memoria
+"prova prova due".object_id
+
+:symbolo.object_id #l'object id di un simbolo è sempre lo stesso
+
+</code></pre>
+
+<p>Il symbol <code>:abc</code> oppure <code>"prova".to_sym</code> è un modo per dire “qualche cosa che si chiama così”</p>
+
+
+
+  </div>
+
+  <div class="slide">
+    <!-- _S9SLIDE_ -->
+<h1 id="metodi-e-loro-chiamata">Metodi e loro chiamata</h1>
+
+<p>I metodi di classe in ruby possono essere immplementati nei seguenti modi</p>
+
+<pre><code>def method_name [( [arg [= default]]...[, * arg [, &amp;expr ]])]
+
+end
+</code></pre>
+
+<p>Esempio:</p>
+
+<pre><code>def method_name
+def method_name (var1, var2)
+def method_name (var1=value1, var2=value2)
+
+return
+return 12
+return 1,2,3 #ritorna 3 variabili
+
+def test
+  return 1,2,3
+end
+
+a,b,c = test
+
+</code></pre>
+
+<pre><code>def prova(*test)
+  puts test.length
+  puts test.inspect
+end
+
+prova("prvoa","test","cinque")
+
+</code></pre>
+
+<p><strong>Metodi di classe</strong></p>
+
+<pre><code>class Classe
+  def metodo_di_istanza
+  end
+
+  def Classe.metodo_di_classe
+  end
+
+  def self.metodo_di_classe
+  end
+
+end
+</code></pre>
+
+
+
+  </div>
+
+  <div class="slide">
+    <!-- _S9SLIDE_ -->
+<h1 id="date-e-calcoli-sulle-date">Date e calcoli sulle date</h1>
+
+<p>I tipi di variabili per la gestione di date sono Date, DateTime, Time</p>
+
+<p><a href="https://ruby-doc.org/stdlib-2.3.1/libdoc/date/rdoc/Date.html">https://ruby-doc.org/stdlib-2.3.1/libdoc/date/rdoc/Date.html</a></p>
+
+
+
+  </div>
+
+  <div class="slide">
+    <!-- _S9SLIDE_ -->
+<h1 id="array">Array</h1>
+
+<p>Un array è una lista di oggetti non necessariamente dello stesso tipo.</p>
+
+<pre><code>arr = Array.new
+
+arr = []
+
+arr = [1, 2, "abc", "prova"]
+
+arr = Array.new(6)
+
+arr = Array.new(2,"prova")
+
+arr[0]
+arr[2]
+
+arr = [1, 2, 3, 4, 5]
+arr[1,2]
+
+arr.join(",")
+
+
+
+</code></pre>
+
+<p><a href="https://ruby-doc.org/core-2.2.0/Array.html">https://ruby-doc.org/core-2.2.0/Array.html</a></p>
+
+
+
+  </div>
+
+  <div class="slide">
+    <!-- _S9SLIDE_ -->
+<h1 id="blocchi">Blocchi</h1>
+
+<p>Un blocco è una porzione di codice compresa tra parole chiave <code>do  end</code> e <code>{}</code></p>
+
+<pre><code>stringa = "Stringa di prova"
+
+stringa.each_byte {|c| puts c.chr}
+
+arr.each do |a|
+  puts a
+end
+
+arr = [1, 2, 3, 4, 5]
+
+arr.each_with_index do |a,index|
+  arr[index]==a
+end
+
+</code></pre>
+
+<p>I blocchi possono essere chiamati all’interno di un metodo, questa metodologia è utilizzata parecchio
+in software scritti in Ruby.</p>
+
+<pre><code>def metodo
+    puts "stampo nel metodo"
+    yield
+end
+
+metodo {
+  puts "Stampon nel blocco"
+}
+
+</code></pre>
+
+<p>la parola chiave <code>yield</code> esegue di fatto il codice contenuto nel blocco passato al metodo</p>
+
+<pre><code>def metodo
+    yield
+    puts "stampo nel metodo"
+    yield
+
+    yield("testo")
+end
+
+metodo { |valore|
+  puts "Stampon nel blocco il valore #{valore}"
+}
+
+metodo do |valore|
+  puts "Stampon nel blocco il valore #{valore}"
+end
+
+</code></pre>
+
+
+
+  </div>
+
+  <div class="slide">
+    <!-- _S9SLIDE_ -->
+<h1 id="test-di-una-condizione-if--then-unless">Test di una condizione: if … then Unless</h1>
+
+<pre><code>def test(n=1)
+  if n == 1 then
+      puts "N = uno"
+  elsif n == 2 then
+      puts "N = due"
+  else
+      puts "N non vale ne uno ne due"
+  end
+end
+</code></pre>
+
+<p>All’opposto di if in ruby è presente Unless</p>
+
+<pre><code>def test(n=1)
+  unless n &gt; 10
+    puts "N&lt;=10"
+  else
+    puts "N&gt;10"
+  end
+end
+</code></pre>
+
+
+
+  </div>
+
+  <div class="slide">
+    <!-- _S9SLIDE_ -->
+<h1 id="case">Case</h1>
+
+<p>In molti casi potrebbe essere più comodo ed utile utilizzare il costrutto <code>case</code> invece che
+if else. Per esempio:</p>
+
+<pre><code>case variabile
+  when "valore1"
+    puts "valore1"
+  when "valore2"
+    puts "valore2"
+  when "valore3","valore4","valore5"
+    puts "valore3 o 4 o 5"
+  eslse
+    puts "altri valori"
+end
+
+</code></pre>
+
+
+
+  </div>
+
+  <div class="slide">
+    <!-- _S9SLIDE_ -->
+<h1 id="classe-range">classe range</h1>
+
+<p>https://ruby-doc.org/core-2.2.0/Range.html</p>
+
+<p>I ranges rappresentao un set di dato con un inizio ed una fine, un intervallo di dati.
+Per definire i range si possono descrivere in questo modo.</p>
+
+<pre><code>(0..2).to_a
+
+
+
+</code></pre>
+
+
+
+  </div>
+
+  <div class="slide">
+    <!-- _S9SLIDE_ -->
+<h1 id="cicli-for">Cicli for</h1>
+
+<p>La gestione dei flussi con i clicli può avvenire con vari costrutti:
+il ciclo for è uno dei costrutti.</p>
+
+<pre><code>for n in "a".."z"
+  puts n
+end
+
+for n in "a".."z"
+  puts n
+end
+
+
+</code></pre>
+
+
+
+  </div>
+
+  <div class="slide">
+    <!-- _S9SLIDE_ -->
+<h1 id="cicli-while">Cicli while</h1>
+
+<p>To be <em>completed</em></p>
+
+
+
+  </div>
+
+  <div class="slide">
+    <!-- _S9SLIDE_ -->
+<h1 id="modificatori-while">Modificatori while</h1>
+
+<p>To be <em>completed</em></p>
+
+
+
+  </div>
+
+  <div class="slide">
+    <!-- _S9SLIDE_ -->
+<h1 id="cicli-until">Cicli until</h1>
+
+<p>To be <em>completed</em></p>
+
+
+
+  </div>
+
+  <div class="slide">
+    <!-- _S9SLIDE_ -->
+<h1 id="qa">Q&amp;A</h1>
+
+<p>Domande e risposte</p>
+
+  </div>
+
+
+</body>
+</html>
