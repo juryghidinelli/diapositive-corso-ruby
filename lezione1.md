@@ -10,6 +10,7 @@ copyright: Copyright © 2016 Archimedia s.r.l.
   - [http://ruby-doc.org/stdlib-2.3.1/](http://ruby-doc.org/stdlib-2.3.1/)
   - [https://rubygems.org/](https://rubygems.org/)
   - [https://github.com/](https://github.com/)
+  - [https://github.com/markets/awesome-ruby](https://github.com/markets/awesome-ruby)
 
 
 # Linguaggi interpretati e compilati
