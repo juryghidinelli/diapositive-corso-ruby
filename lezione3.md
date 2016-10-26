@@ -161,20 +161,149 @@ puts Logger.create.id
 
 ``@@logger`` è una variabile di classe vuol dire che è comune per tutte le classi (non solo le istanze)
 
-In particolare questo esempio è l'implementazione di un singleton
+In particolare questo esempio è l'implementazione di un singleton.
 
 
 # Ereditarietà
 
-To be _completed_
+L'ereditarietà è un meccanismo della programmazione orientata agli oggetti che partendo da una classe
+iniziale di base, raffine a specializza una sottoclasse.
+Esempio:
+
+```
+class Vehicle
+  attr_accessor :ruote
+
+  def initialize(ruote)
+    self.ruote=ruote
+  end
+
+end
+
+
+class Car < Vehicle
+  attr_accessor :potenza, :tipo_carburante
+
+  def initialize(potenza, tipo_carburante, ruote)
+    super(ruote)
+    self.potenza = potenza
+    self.tipo_carburante = tipo_carburante
+  end
+end
+
+class Bicycle < Vehicle
+
+  def initialize(ruote)
+    super(ruote)
+  end
+end
+
+
+car = Car.new(15, "Benzina", 4)
+bicycle = Bicycle.new(2)
+
+
+```
+
+Ruby è un linguaggio ad ereditarietà singola (una classe può ereditare da una
+sola classe e non da più classi).
+
 
 # Override di un metodo
 
-To be _completed_
+```
+class Vehicle
+  attr_accessor :ruote
+
+  def initialize(ruote)
+    self.ruote=ruote
+  end
+
+  def tipo_veicolo
+    "Veicolo Generico"
+  end
+
+end
+
+
+class Car < Vehicle
+  attr_accessor :potenza, :tipo_carburante
+
+  def initialize(potenza, tipo_carburante, ruote)
+    super(ruote)
+    self.potenza = potenza
+    self.tipo_carburante = tipo_carburante
+  end
+
+  def tipo_veicolo
+    "Automobile"
+  end
+end
+```
+
 
 # Metodi polimorfici
 
-To be _completed_
+Il poliformismo in Ruby viene gestito attraverso la tecnica [Duck Typing](https://it.wikipedia.org/wiki/Duck_typing)
+
+
+```
+class Vehicle
+  attr_accessor :ruote
+
+  def initialize(ruote)
+    self.ruote=ruote
+  end
+
+  def tipo_veicolo
+    "Veicolo Generico"
+  end
+
+  def to_s
+    "sono un veicolo"
+  end
+
+end
+
+
+class Car < Vehicle
+  attr_accessor :potenza, :tipo_carburante
+
+  def initialize(potenza, tipo_carburante, ruote)
+    super(ruote)
+    self.potenza = potenza
+    self.tipo_carburante = tipo_carburante
+  end
+
+  def tipo_veicolo
+    "Automobile"
+  end
+
+  def to_s
+    "sono un automobile"
+  end
+end
+
+class Animal
+  attr_accessor :classificazione
+
+  def initialize(classificazione)
+    self.classificazione = classificazione
+  end
+
+  def to_s
+    "io sono un animale #{classificazione}"
+  end
+end
+
+puts Animal.new.to_s
+puts Car.new.to_s
+puts Vehicle.new.to_s
+
+```
+
+
+
 
 # Q&A
 

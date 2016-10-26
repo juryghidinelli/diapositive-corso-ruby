@@ -235,7 +235,7 @@ puts Logger.create.id
 
 <p><code>@@logger</code> è una variabile di classe vuol dire che è comune per tutte le classi (non solo le istanze)</p>
 
-<p>In particolare questo esempio è l’implementazione di un singleton</p>
+<p>In particolare questo esempio è l’implementazione di un singleton.</p>
 
 
 
@@ -245,7 +245,46 @@ puts Logger.create.id
     <!-- _S9SLIDE_ -->
 <h1 id="ereditariet">Ereditarietà</h1>
 
-<p>To be <em>completed</em></p>
+<p>L’ereditarietà è un meccanismo della programmazione orientata agli oggetti che partendo da una classe
+iniziale di base, raffine a specializza una sottoclasse.
+Esempio:</p>
+
+<pre><code>class Vehicle
+  attr_accessor :ruote
+
+  def initialize(ruote)
+    self.ruote=ruote
+  end
+
+end
+
+
+class Car &lt; Vehicle
+  attr_accessor :potenza, :tipo_carburante
+
+  def initialize(potenza, tipo_carburante, ruote)
+    super(ruote)
+    self.potenza = potenza
+    self.tipo_carburante = tipo_carburante
+  end
+end
+
+class Bicycle &lt; Vehicle
+
+  def initialize(ruote)
+    super(ruote)
+  end
+end
+
+
+car = Car.new(15, "Benzina", 4)
+bicycle = Bicycle.new(2)
+
+
+</code></pre>
+
+<p>Ruby è un linguaggio ad ereditarietà singola (una classe può ereditare da una
+sola classe e non da più classi).</p>
 
 
 
@@ -255,7 +294,34 @@ puts Logger.create.id
     <!-- _S9SLIDE_ -->
 <h1 id="override-di-un-metodo">Override di un metodo</h1>
 
-<p>To be <em>completed</em></p>
+<pre><code>class Vehicle
+  attr_accessor :ruote
+
+  def initialize(ruote)
+    self.ruote=ruote
+  end
+
+  def tipo_veicolo
+    "Veicolo Generico"
+  end
+
+end
+
+
+class Car &lt; Vehicle
+  attr_accessor :potenza, :tipo_carburante
+
+  def initialize(potenza, tipo_carburante, ruote)
+    super(ruote)
+    self.potenza = potenza
+    self.tipo_carburante = tipo_carburante
+  end
+
+  def tipo_veicolo
+    "Automobile"
+  end
+end
+</code></pre>
 
 
 
@@ -265,7 +331,61 @@ puts Logger.create.id
     <!-- _S9SLIDE_ -->
 <h1 id="metodi-polimorfici">Metodi polimorfici</h1>
 
-<p>To be <em>completed</em></p>
+<p>Il poliformismo in Ruby viene gestito attraverso la tecnica <a href="https://it.wikipedia.org/wiki/Duck_typing">Duck Typing</a></p>
+
+<pre><code>class Vehicle
+  attr_accessor :ruote
+
+  def initialize(ruote)
+    self.ruote=ruote
+  end
+
+  def tipo_veicolo
+    "Veicolo Generico"
+  end
+
+  def to_s
+    "sono un veicolo"
+  end
+
+end
+
+
+class Car &lt; Vehicle
+  attr_accessor :potenza, :tipo_carburante
+
+  def initialize(potenza, tipo_carburante, ruote)
+    super(ruote)
+    self.potenza = potenza
+    self.tipo_carburante = tipo_carburante
+  end
+
+  def tipo_veicolo
+    "Automobile"
+  end
+
+  def to_s
+    "sono un automobile"
+  end
+end
+
+class Animal
+  attr_accessor :classificazione
+
+  def initialize(classificazione)
+    self.classificazione = classificazione
+  end
+
+  def to_s
+    "io sono un animale #{classificazione}"
+  end
+end
+
+puts Animal.new.to_s
+puts Car.new.to_s
+puts Vehicle.new.to_s
+
+</code></pre>
 
 
 
